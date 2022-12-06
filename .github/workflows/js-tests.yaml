@@ -11,9 +11,7 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-          # - os: windows-2022 # windows hangs indefintely when installing build tools
-          # can't switch to node19 for windows until https://github.com/WiseLibs/better-sqlite3/pull/870 is resolved
-          # as some js tests use better-sqlite3
+          - os: windows-2022
           - os: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -26,7 +24,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 19.x
 
       - name: Windows build tools
         if: runner.os == 'Windows'
